@@ -1,0 +1,284 @@
+body   { font-size: 9pt; font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0; padding: 0 }
+
+a:link {
+	text-decoration: none;
+	color: #933;
+}
+a:visited {
+	color: #933;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+	background-color: #933;
+	color: #ffc;
+}
+
+
+#level10  { background-image: url(../images/lewa.jpg); background-repeat: no-repeat; position: absolute; top: 180px; left: 0; width: 240px; height: 520px }
+#level12  { background-image: url(../images/tlo.jpg); background-repeat: no-repeat; margin: 0; padding: 0; position: absolute; top: 0; left: 240px; width: 760px; height: 520px }
+#wrapper4ie {
+	width: 100%;
+	text-align: center;
+}
+#wrapper { /* w div o tym id jest zawiniete wszystko */
+	margin: 0px auto; /* zapewnia nam wycentrowanie w poziomie i brak marginesow gora/dol */
+	width:1000px;
+	position: relative;
+	text-align: left;
+}
+
+#logo  { background-image: url(../images/logo.jpg); background-repeat: no-repeat; float: left; position: absolute; top: 0; left: 0; width: 240px; height: 180px }
+
+#header  { background-image: url(../images/glowka.jpg); float: left; position: absolute; top: 0; left: 240px; width: 760px; height: 180px }
+
+/*********** menu *******************/
+#menu {
+	position: absolute;
+	width: 240px;
+	top: 0px;
+	left: 0px;
+	padding: 0px 0px 0px 40px;
+	margin: 0px;
+}
+
+#menu div {
+	font-size: 10pt;
+	width:145px; 
+	text-align: right;
+	padding: 5px 10px;
+	margin: 10px 0px 10px 0px;
+  	voice-family: "\"}\""; 
+  	voice-family:inherit;
+	width: 125px;
+}
+#menu div.act {
+	background-color: #933;
+	color: #ffc;
+	font-weight: bold
+}
+#menu div.pass {
+	background-color: #ffc;
+	color: #933;
+	font-weight: bold
+}
+
+#menu div.act a {
+	text-decoration: none;
+	color: #ffc;
+}
+#menu div.act a:link:visited {
+	color: #ffc;
+}
+#menu div.act a:hover  {
+	color: #ffc;
+	background-color: #933;
+}
+#menu div.pass a {
+	text-decoration: none;
+}
+#menu div.pass a:link:visited {
+	color: #933;
+}
+#menu div.pass a:hover  {
+	color: #933;
+	background-color: #ffc;
+}
+#content {
+	padding: 0px;
+	margin: 0px;
+	width: 730px;
+}
+
+#footer {
+	width: 100%;
+	clear: both;
+}
+
+
+/******************** style dla tresci ****************/
+#content p {
+	margin: 0pt;
+	margin-bottom: 1em;
+	text-align: justify;
+}
+
+#content>p+p {
+	text-indent:2em;
+}
+
+#content h1 {
+	font-size: 16pt;
+	font-weight: bold;
+	padding: 0px;
+	color: #933;
+}
+
+#content h2 {
+	font-size: 12pt;
+	font-weight: bold;
+
+	color: #933;
+}
+
+#content h3 {
+	font-size: 10pt;
+	font-weight: bold;
+
+	color: #933;
+}
+
+
+/******************** plugin tx_acers_pi1 *********************/
+DIV.tx-acers-pi1-singleView {
+	position: relative;
+	width: 388px;
+}
+
+
+#content DIV.tx-acers-pi1-singleView h2 {
+	margin-bottom: 0px;
+}
+#content DIV.tx-acers-pi1-singleView h3 {
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-bottom: 0px;
+}
+#content DIV.tx-acers-pi1-singleView h3.latin {
+	font-style: italic;
+	font-size: 8pt;
+	font-weight: normal;
+	margin-bottom: 6px;
+	margin-top: 0px;
+}
+
+#content DIV.tx-acers-pi1-singleView h3.othernames {
+	font-size: 8pt;
+	font-weight: normal;
+}
+#content DIV.tx-acers-pi1-singleView TABLE TD {
+	vertical-align: bottom;
+}
+#content DIV.tx-acers-pi1-singleView TABLE TD.label {
+	text-align: right;
+	color: #933;
+	vertical-align: top;
+}
+
+span.label {
+	color: #933;
+}
+
+DIV.tx-acers-pi1-singleView H2 {}
+/* DIV.tx-acers-pi1-singleView DIV { border: 1px solid #933;} */
+DIV.tx-acers-pi1-singleView DIV.imageTree {
+	position: absolute;
+	left: 395px;
+	top: 0px;
+	width: 200px;
+	height: 267px;
+}
+DIV.tx-acers-pi1-singleView DIV.imageBark {
+	position: absolute;
+	left: 604px;
+	top: 0px;
+	width: 124px;
+	height: 93px;
+}
+DIV.tx-acers-pi1-singleView DIV.imageLeaf {
+	position: absolute;
+	left: 604px;
+	top: 103px;
+	width: 124px;
+	height: 165px;
+}
+DIV.tx-acers-pi1-singleView P {
+	width: 365px;
+}
+
+DIV.tx-acers-pi1 {
+	position: relative;
+	height: 100px;
+}
+
+
+DIV.continentList DIV.continent {
+	width: 230px;
+/*	border: 1px solid red;*/
+}
+
+DIV.continentList DIV.NA,
+DIV.continentList DIV.AS {
+/*	border: 1px solid green;*/
+	margin-left: 8px;
+}
+
+DIV.tx-acers-pi1 TD.EU,
+DIV.tx-acers-pi1 TD.AS {
+	border-right: 4px solid #933;
+}
+
+
+/* lista klonow na kontynencie */
+DIV.continent h2 {
+	text-align: center;
+}
+
+DIV.continent h3 {
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-bottom: 0px;
+}
+
+#content DIV.continent a.latin {
+	font-style: italic;
+	font-size: 8pt;
+	font-weight: normal;
+	margin-bottom: 4px;
+	display: block;
+}
+
+#content DIV.continent a.othernames {
+	font-size: 8pt;
+	font-weight: normal;
+	display: block;
+}
+
+
+#content DIV.continent P {
+	font-size: 9pt;
+	text-align: left;	
+}
+
+#content DIV.continent a:link:visited {
+	text-decoration: none;
+	color: black;
+}
+
+#content DIV.continent a:hover {
+/*	text-decoration: underline;*/
+	background-color: transparent;
+	color: black;
+}
+
+
+DIV.continent DIV.oneAcer {
+	height: 127px;
+	position: relative;
+	padding-right: 100px;
+	margin-bottom: 8px;
+}
+
+DIV.continent DIV.oneAcer DIV.image {
+	position: absolute;
+	width: 95px;
+	height: 127px;
+	top: 0px;
+	right: 0px;
+/*	border: 1px solid black; */
+}
+
+#content DIV.continent P {
+	font-size: 9pt;
+	text-align: left;	
+}

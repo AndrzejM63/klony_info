@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django',
+    'bootstrap3',
     'klony'
 ]
 
@@ -126,3 +127,5 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = '/uploads/'
+ACERS_IMG = '/tx_acers/'

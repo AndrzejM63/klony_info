@@ -1,0 +1,25 @@
+{% extends 'klony/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Zaloguj się
+        </div>
+        <div class="panel-body">
+
+            <p><b>jako:</b></p>
+            <div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="save">
+                    {{ msg }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

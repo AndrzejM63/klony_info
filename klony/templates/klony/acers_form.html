@@ -1,0 +1,24 @@
+{% extends 'klony/base.html' %}
+
+{% block title %}
+    Acer form
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Acer
+        </div>
+        <div class="panel-body">
+
+            <p><b>Add Acer:</b></p>
+            <div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

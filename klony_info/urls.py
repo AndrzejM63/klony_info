@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
 
-from klony.views import AcerUpdate, LoginView2, LogoutView, AcerList
+from klony.views import AcerUpdate, LoginView2, LogoutView, AcerList, AcerSearch
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +27,6 @@ urlpatterns = [
     url(r'^login/?$', LoginView2.as_view(), name='login-form'),
     url(r'^logout/?$', LogoutView.as_view(), name='logout-form'),
     url(r'^acer/(?P<pk>\d+)/?$', AcerUpdate.as_view(), name='acer-update'),
-    url(r'^acer/?$', AcerList.as_view(), name='acer-list'),
-]
+    url(r'^acers/?$', AcerList.as_view(), name='acer-list'),
+    url(r'^acer/?$', AcerSearch.as_view(), name='acer-search'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

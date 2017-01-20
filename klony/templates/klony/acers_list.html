@@ -1,3 +1,4 @@
+<!--{% load static %}-->
 <!doctype html>
 <html>
     <head>
@@ -7,18 +8,20 @@
 
     <body>
         <h1>Lista klonów</h1>
+        <form enctype="multipart/form-data">
         <table>
         {% for acer in object_list %}
             <tr>
-                <td>{{ acer.botanic_name }}</td>
+                <td><a href="{% url 'acer-update' pk=acer.uid %}">{{ acer.botanic_name }}</a></td>
                 <td>{{ acer.latin_name }}</td>
-                <td>{{ acer.image_tree }} zł</td>
-                <td>{{ acer.new_image_tree }}</td>
-                <td>{{ acer.new_image_bark }}</td>
-                <td>{{ acer.new_image_leaf }}</td>
+                <td>{{ acer.image_tree }}</td>
+                <td>{% if acer.new_image_tree %}<a href="{{ acer.new_image_tree.url }}">pokrój</a> {% else %} --- {% endif %}</td>
+                <td>{% if acer.new_image_bark %}<a href="{{ acer.new_image_bark.url }}">kora</a> {% else %} --- {% endif %}</td>
+                <td>{% if acer.new_image_leaf %}<a href="{{ acer.new_image_leaf.url }}">liść</a> {% else %} --- {% endif %}</td>
             </tr>
         {% endfor %}
         </table>
+        </form>
         <!--<a href="/add_product">Dodaj produkt</a>-->
     </body>
 </html>

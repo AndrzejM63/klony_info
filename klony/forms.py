@@ -23,4 +23,16 @@ class LoginForm(forms.Form):
 class AcersMainForm(ModelForm):
     class Meta:
         model = Acers
-        fields = ['botanic_name', 'latin_name', 'image_tree', 'new_image_tree', 'new_image_bark', 'new_image_leaf']
+        fields = ['uid', 'botanic_name', 'latin_name', 'image_tree', 'new_image_tree', 'new_image_bark', 'new_image_leaf']
+
+class AcersSearchForm(forms.Form):
+    b_uid = forms.CharField(required=False)
+    l_uid = forms.CharField(required=False)
+    shape = forms.CharField(required=False)
+    frost = forms.CharField(required=False)
+    lc_summer = forms.CharField(required=False)
+    lc_autumn = forms.CharField(required=False)
+
+    # botanic_name = forms.CharField(max_length=113, required=False)
+    # latin_name = forms.CharField(max_length=113, required=False)
+

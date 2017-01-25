@@ -19,7 +19,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
 
-from klony.views import AcerUpdate, LoginView2, LogoutView, AcerList, AcerSearch
+from klony.views import AcerUpdate, LoginView2, LogoutView, AcerList, AcerSearch, AcerHome, AcerCultivation
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,4 +29,6 @@ urlpatterns = [
     url(r'^acer/(?P<pk>\d+)/?$', AcerUpdate.as_view(), name='acer-update'),
     url(r'^acers/?$', AcerList.as_view(), name='acer-list'),
     url(r'^acer/?$', AcerSearch.as_view(), name='acer-search'),
+    url(r'^$|^home$', AcerHome.as_view(), name='acer-home'),
+    url(r'^cultivation/$', AcerCultivation.as_view(), name='acer-home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -133,3 +133,17 @@ class AcerSearch(View):
         return render(request,
                       'klony/acers_search.html',
                       {'acers': acers})
+
+
+class AcerHome(View):
+    def get(self, request):
+        return render(request,
+                      'klony/acers_home.html',
+                      )
+
+
+class AcerCultivation(View):
+    def get(self, request):
+        return render(request,
+                      'klony/acers_cultivation.html',
+                      )

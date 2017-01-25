@@ -1,94 +1,92 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Acers list</title>
-        <meta charset="utf-8">
-    </head>
+{% extends 'klony/base.html' %}
 
-    <body>
-        {% if request.method == 'GET' %}
-            <div class="headline-title">
-                Wyszukiwarka klonów
-            </div>
+{% block title %}
+    {% if request.method == 'GET' %}
+        Wyszukiwarka klonów
+    {% else %}
+        Lista klonów
+    {% endif %}
+{%endblock %}
+
+{% block content %}
+    {% if request.method == 'GET' %}
+        {% csrf_token %}
+        <form action="{% url 'acer-search' %}" method="post">
+            <p>Wybierz klon</p>
+
+            <select size="1" name="b_uid" id="b_uid">
+                <option value="">Nazwa botaniczna</option>
+                {% for acer in acers %}
+                    <option value="{{acer.uid}}">{{ acer.botanic_name }}</option>
+                {% endfor %}
+            </select>
             {% csrf_token %}
+            <select size="1" name="l_uid" id="l_uid">
+                <option value="">Nazwa łacińska</option>
+                {% for acer in acers %}
+                    <option value="{{acer.uid}}">{{ acer.latin_name }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+
+            <p>lub wypełnij formularz i wyszukaj </p>
+            <select size="1" name="shape">
+                <option value="">Pokrój</option>
+                {% for i,j in ashapes %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select> <br>
+            <select size="1" name="frost">
+                <option value="">Mrozoodporność</option>
+                {% for i,j in frost %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select> <br>
+            <select size="1" name="lc_summer">
+                <option value="">Kolor liści latem</option>
+                {% for i,j in lc_summer %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select> <br>
+            <select size="1" name="lc_autumn">
+                <option value="">Kolor liści jesienią</option>
+                {% for i,j in lc_autumn %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select> <br><br>
+            {% if form %}
             <form action="{% url 'acer-search' %}" method="post">
-                <p>Wybierz klon</p>
 
-                <select size="1" name="b_uid" id="b_uid">
-                    <option value="">Nazwa botaniczna</option>
-                    {% for acer in acers %}
-                        <option value="{{acer.uid}}">{{ acer.botanic_name }}</option>
-                    {% endfor %}
-                </select>
                 {% csrf_token %}
-                <select size="1" name="l_uid" id="l_uid">
-                    <option value="">Nazwa łacińska</option>
-                    {% for acer in acers %}
-                        <option value="{{acer.uid}}">{{ acer.latin_name }}</option>
-                    {% endfor %}
-                </select>
+                {{ form.as_p }}
 
-                <p>lub wypełnij formularz i wyszukaj </p>
-                <select size="1" name="shape">
-                    <option value="">Pokrój</option>
-                    {% for i,j in ashapes %}
-                        <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select> <br>
-                <select size="1" name="frost">
-                    <option value="">Mrozoodporność</option>
-                    {% for i,j in frost %}
-                        <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select> <br>
-                <select size="1" name="lc_summer">
-                    <option value="">Kolor liści latem</option>
-                    {% for i,j in lc_summer %}
-                        <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select> <br>
-                <select size="1" name="lc_autumn">
-                    <option value="">Kolor liści jesienią</option>
-                    {% for i,j in lc_autumn %}
-                        <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select> <br>
-                {% if form %}
-                <form action="{% url 'acer-search' %}" method="post">
-
-                    {% csrf_token %}
-                    {{ form.as_p }}
-
-                </form>
-                {% endif %}
-                <input type="submit" value="Search">
             </form>
-        {% else %}
-
-            <h1>Lista klonów</h1>
-            <table>
-                <thead>
+            {% endif %}
+            <input type="submit" value="Search">
+        </form>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Botanic name</th>
+                    <th>Latin name</th>
+                    <th>Image</th>
+                    <th>Bark</th>
+                    <th>Leaf</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for acer in acers %}
                     <tr>
-                        <th>Botanic name</th>
-                        <th>Latin name</th>
-                        <th>Image</th>
-                        <th>Bark</th>
-                        <th>Leaf</th>
+                        <td><a href="{% url 'acer-update' pk=acer.uid %}">{{ acer.botanic_name }}</a></td>
+                        <td>{{ acer.latin_name }}</td>
+                        <td>{% if acer.new_image_tree %}<a href="{{ acer.new_image_tree.url }}">pokrój</a> {% else %} --- {% endif %}</td>
+                        <td>{% if acer.new_image_bark %}<a href="{{ acer.new_image_bark.url }}">kora</a> {% else %} --- {% endif %}</td>
+                        <td>{% if acer.new_image_leaf %}<a href="{{ acer.new_image_leaf.url }}">liść</a> {% else %} --- {% endif %}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    {% for acer in acers %}
-                        <tr>
-                            <td><a href="{% url 'acer-update' pk=acer.uid %}">{{ acer.botanic_name }}</a></td>
-                            <td>{{ acer.latin_name }}</td>
-                            <td>{% if acer.new_image_tree %}<a href="{{ acer.new_image_tree.url }}">pokrój</a> {% else %} --- {% endif %}</td>
-                            <td>{% if acer.new_image_bark %}<a href="{{ acer.new_image_bark.url }}">kora</a> {% else %} --- {% endif %}</td>
-                            <td>{% if acer.new_image_leaf %}<a href="{{ acer.new_image_leaf.url }}">liść</a> {% else %} --- {% endif %}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
-        <!--<a href="/add_product">Dodaj produkt</a>-->
-    </body>
-</html>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <!--<a href="/add_product">Dodaj produkt</a>-->
+{% endblock %}

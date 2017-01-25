@@ -2,7 +2,7 @@
     text-decoration: underline;
 }
 .headline {
-    margin: 15px 0;
+    margin: 150px 0;
     padding: 0 5px;
     clear: both;
 }
@@ -37,8 +37,12 @@
     margin-left: 30px;
     margin-bottom: 20px;
 }
+
 .content-block {
+    background-image: url('/static/images/tlo.jpg');
+    background-size: 100% auto;
     margin: 10px;
+    font-size: 1em;
 }
 .content-block-404 {
     text-align: center;
@@ -50,5 +54,13 @@
 }
 .menuspace {
     padding: 0px 8px;
+}
+
+/* old php based web settings */
+.bodytext {
+    margin: 1em;
+    margin-bottom: 1em;
+    text-align: justify;
+    font-size: 1em;
 }
 

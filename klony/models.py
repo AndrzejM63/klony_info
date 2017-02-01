@@ -1,12 +1,21 @@
 from django.db import models
 
 
+# Create your models here.
+ORIGIN = (
+    ('AS', 'Azja'),
+    ('EU', 'Europa'),
+    ('NA', 'Ameryka Płn.'),
+)
+
+
 SHAPES1 = (
     ("drzewo", "drzewo"),
-    ("krzew","krzew"),
+    ("krzew", "krzew"),
     ("niewysokie drzewo", "niewysokie drzewo"),
-    ("niewysokie drzewo lub krzew","niewysokie drzewo lub krzew"),
+    ("niewysokie drzewo lub krzew", "niewysokie drzewo lub krzew"),
 )
+
 
 COLORS = (
     ("zielony", "zielony"),
@@ -16,13 +25,14 @@ COLORS = (
     ("pstry", "pstry"),
 )
 
+
 FROST_RES = (
     ("całkowicie mrozoodporny", "całkowicie mrozoodporny"),
     ("mrozoodporny", "mrozoodporny"),
     ("nie w pełni odporny - przemarza podczas surowych zim", "nie w pełni odporny - przemarza podczas surowych zim"),
 )
 
-# Create your models here.
+
 class Acers(models.Model):
     uid = models.AutoField(primary_key=True)
     pid = models.IntegerField()
@@ -37,7 +47,7 @@ class Acers(models.Model):
     type = models.CharField(max_length=45, blank=True, null=True)
     variant = models.CharField(max_length=90, blank=True, null=True)
     other_names = models.CharField(max_length=113, blank=True, null=True)
-    origin1 = models.CharField(max_length=3, blank=True, null=True)
+    origin1 = models.CharField(choices=ORIGIN, max_length=3, blank=True, null=True)
     origin2 = models.TextField(blank=True, null=True)
     occurrence = models.TextField(blank=True, null=True)
     image_tree = models.TextField(blank=True, null=True)
@@ -79,4 +89,3 @@ class Acers(models.Model):
 
     def __str__(self):
         return self.latin_name
-

@@ -23,7 +23,9 @@ class LoginForm(forms.Form):
 class AcersMainForm(ModelForm):
     class Meta:
         model = Acers
-        fields = ['uid', 'botanic_name', 'latin_name', 'image_tree', 'new_image_tree', 'new_image_bark', 'new_image_leaf']
+        fields = ['uid', 'botanic_name', 'latin_name', 'other_names', 'origin1', 'origin2', 'occurrence', 'height_max1', \
+                  'height_max1', 'shape1', 'shape2', 'leaf_structure', 'leaf_size',  \
+                  'new_image_tree', 'new_image_bark', 'new_image_leaf']
 
 class AcersSearchForm(forms.Form):
     b_uid = forms.CharField(required=False)

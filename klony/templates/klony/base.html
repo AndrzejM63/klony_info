@@ -12,32 +12,37 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
+    <div class="row">
+        <div class="col-md-3">
+            <div id="logo">
+                <a href="/" class="menuspace"><img src="/static/images/logo.jpg">
+                </a>
 
-    <div class="topmenu">
-
-        <!--<p class="navbar-left">-->
-            <div id="menu" class="navbar-left topmenu">
-                <a href="/" onfocus="blurLink(this);" class="menuspace">STRONA GŁÓWNA</a>
-                <a href="/acers/" onfocus="blurLink(this);" class="menuspace">KLONY</a>
-                <a href="/cultivation/" onfocus="blurLink(this);" class="menuspace">UPRAWA</a>
-                <a href="/galery/" onfocus="blurLink(this);" class="menuspace">GALERIA</a>
-                <a href="bibliografia/" onfocus="blurLink(this);"class="menuspace">BIBLIOGRAFIA</a>
-                <a href="/contact/" onfocus="blurLink(this);" class="menuspace">KONTAKT</a>
             </div>
-        <!--</p>-->
-        <p class="navbar-right logout topmenu">
-            Signed in as: {{ request.user.username }},
-            <a class="menuspace" href="{% url 'site-logout' %}?next=/acers">LOGOUT</a>
-        </p>
-    </div>
-    <div class="base-headline-title">
-        <h3>
-            {% block title %}{% endblock %}
-        </h3>
+        </div>
+        <div class="col-md-9">
+            <div id="menu" class="navbar-left">
 
+                <a href="/acers/" class="menuspace">KLONY</a>
+                <a href="/cultivation/" class="menuspace">UPRAWA</a>
+                <a href="/galery/" class="menuspace">GALERIA</a>
+                <a href="/bibliography/" class="menuspace">BIBLIOGRAFIA</a>
+                <a href="/contact/" class="menuspace">KONTAKT</a>
+            </div>
+            <div class="navbar-right logout">
+                Zalogowany: {{ request.user.username }},
+                <a class="menuspace" href="{% url 'site-logout' %}?next=/acers">LOGOUT</a>
+            </div>
+        </div>
     </div>
+    <!--<div class="base-headline-title">-->
+        <!--<h3>-->
+            <!--{% block title %}{% endblock %}-->
+        <!--</h3>-->
 
-    <div class="content-block">
+    <!--</div>-->
+
+    <div class="row content-block">
         {% block content %}
         {% endblock %}
     </div>
@@ -47,5 +52,6 @@
     <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     {% block content_js %}
     {% endblock %}
+</div>
 </body>
 </html>

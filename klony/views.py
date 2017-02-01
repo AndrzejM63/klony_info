@@ -96,19 +96,16 @@ class AcerSearch(View):
         for a in acers_obj:
             d = dict()
             d['uid'] = a.uid
-            d['botanic_name'] = a.botanic_name
-            d['latin_name'] = a.latin_name
+            d['botanic_name'] = a.botanic_name + ' ' + a.variant
+            d['latin_name'] = a.latin_name + ' ' + a.variant
             # d['shape1'] = dict(SHAPES1).get(a.shape1)
             acers.append(d)
-        # d = dict(SHAPES1)
-        # acers['shape1'].append(dict(SHAPES1))
-        # shapes_tmp = list(SHAPES1)
-        # shapes = list()
-        # for i in shapes_tmp:
-        #     shapes.append(i[0])
+        acers_lat = sorted(acers, key=lambda k: k['latin_name'].lower())
+        acers_bot = sorted(acers, key=lambda k: k['botanic_name'].lower())
         return render(request,
                       'klony/acers_search.html',
-                      {'acers': acers,
+                      {'acers_bot': acers_bot,
+                       'acers_lat': acers_lat,
                        'ashapes': SHAPES1,
                        'frost': FROST_RES,
                        'lc_summer': COLORS,
@@ -146,4 +143,11 @@ class AcerCultivation(View):
     def get(self, request):
         return render(request,
                       'klony/acers_cultivation.html',
+                      )
+
+
+class AcerBibliography(View):
+    def get(self, request):
+        return render(request,
+                      'klony/acers_bibliography.html',
                       )

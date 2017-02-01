@@ -38,12 +38,22 @@
     margin-bottom: 20px;
 }
 
-.content-block {
+body{
     background-image: url('/static/images/tlo.jpg');
     background-size: 100% auto;
     margin: 10px;
+}
+
+.row {
+    margin: 10px;
     font-size: 1em;
 }
+.content-block {
+ {
+    margin: 10px;
+    font-size: 1em;
+}
+
 .content-block-404 {
     text-align: center;
     margin-top: 200px;
@@ -52,15 +62,30 @@
     margin-top: 10px;
     margin-left: 10px;
 }
-.menuspace {
-    padding: 0px 8px;
+.menuspace a {
+    padding: 10px 8px;
+    margin-left: 10px;
 }
 
 /* old php based web settings */
 .bodytext {
-    margin: 1em;
+    margin: 10px;
     margin-bottom: 1em;
     text-align: justify;
     font-size: 1em;
 }
 
+#logo {
+    margin: 10px;
+/*    float: left;
+    position: absolute;
+    top: 0;
+    left: 0; */
+    width: 240px;
+    height: 180px;
+}
+
+#menu {
+    vertical-align: middle;
+    height: 180px;
+}

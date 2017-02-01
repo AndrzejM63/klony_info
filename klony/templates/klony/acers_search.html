@@ -16,14 +16,14 @@
 
             <select size="1" name="b_uid" id="b_uid">
                 <option value="">Nazwa botaniczna</option>
-                {% for acer in acers %}
+                {% for acer in acers_bot %}
                     <option value="{{acer.uid}}">{{ acer.botanic_name }}</option>
                 {% endfor %}
             </select>
             {% csrf_token %}
             <select size="1" name="l_uid" id="l_uid">
                 <option value="">Nazwa łacińska</option>
-                {% for acer in acers %}
+                {% for acer in acers_lat %}
                     <option value="{{acer.uid}}">{{ acer.latin_name }}</option>
                 {% endfor %}
             </select>

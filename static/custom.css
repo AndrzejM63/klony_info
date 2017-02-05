@@ -67,6 +67,12 @@ body{
     margin-left: 10px;
 }
 
+.rowcaps {
+    color: red;
+    text-align: right;
+    vertical-align: top;
+}
+
 /* old php based web settings */
 .bodytext {
     margin: 10px;
@@ -89,3 +95,4 @@ body{
     vertical-align: middle;
     height: 180px;
 }
+

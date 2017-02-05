@@ -50,9 +50,9 @@ class Acers(models.Model):
     origin1 = models.CharField(choices=ORIGIN, max_length=3, blank=True, null=True)
     origin2 = models.TextField(blank=True, null=True)
     occurrence = models.TextField(blank=True, null=True)
-    image_tree = models.TextField(blank=True, null=True)
-    image_bark = models.TextField(blank=True, null=True)
-    image_leaf = models.TextField(blank=True, null=True)
+    image_tree = models.ImageField(upload_to='tx_acers', blank=True, null=True)
+    image_bark = models.ImageField(upload_to='tx_acers', blank=True, null=True)
+    image_leaf = models.ImageField(upload_to='tx_acers', blank=True, null=True)
     in_poland = models.TextField(blank=True, null=True)
     height_10 = models.CharField(max_length=45, blank=True, null=True)
     shape1 = models.CharField(choices=SHAPES1, max_length=90, blank=True, null=True)
@@ -83,9 +83,9 @@ class Acers(models.Model):
     other_latin_name = models.CharField(max_length=113, blank=True, null=True)
     other_variant = models.CharField(max_length=90, blank=True, null=True)
     poland_availability = models.IntegerField(blank=True, null=True)
-    new_image_tree = models.ImageField(upload_to='tree', blank=True, null=True)
-    new_image_bark = models.ImageField(upload_to='bark', blank=True, null=True)
-    new_image_leaf = models.ImageField(upload_to='leaf', blank=True, null=True)
+    new_image_tree = models.ImageField(upload_to='', blank=True, null=True)
+    new_image_bark = models.ImageField(upload_to='', blank=True, null=True)
+    new_image_leaf = models.ImageField(upload_to='', blank=True, null=True)
 
     def __str__(self):
         return self.latin_name

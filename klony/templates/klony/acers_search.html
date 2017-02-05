@@ -65,28 +65,81 @@
             <input type="submit" value="Search">
         </form>
     {% else %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Botanic name</th>
-                    <th>Latin name</th>
-                    <th>Image</th>
-                    <th>Bark</th>
-                    <th>Leaf</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for acer in acers %}
-                    <tr>
-                        <td><a href="{% url 'acer-update' pk=acer.uid %}">{{ acer.botanic_name }}</a></td>
-                        <td>{{ acer.latin_name }}</td>
-                        <td>{% if acer.new_image_tree %}<a href="{{ acer.new_image_tree.url }}">pokrój</a> {% else %} --- {% endif %}</td>
-                        <td>{% if acer.new_image_bark %}<a href="{{ acer.new_image_bark.url }}">kora</a> {% else %} --- {% endif %}</td>
-                        <td>{% if acer.new_image_leaf %}<a href="{{ acer.new_image_leaf.url }}">liść</a> {% else %} --- {% endif %}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+                <table class="col-md-4">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><h4 style="text-align: center">Europa</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for acer in acersEu %}
+                            <tr style="height:150px">
+                                <td class="col-md-7">
+                                    <p><a href="{% url 'acer-details' pk=acer.uid %}">{{ acer.botanic_name }}</a><br>
+                                    {{ acer.other_names }}<br>
+                                    {{ acer.latin_name }}<br>
+                                    {{ acer.description }}</p>
+                                </td>
+                                <td class="col-md-5">
+                                    {% if acer.image_tree %}<a href="{% url 'acer-details' pk=acer.uid %}">
+                                    <img src="{{ acer.image_tree.url }}" class="img-thumbnail" alt="Cinque Terre" width="75%"></a>
+                                    {% else %} --- {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="col-md-4">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><h4 style="text-align: center">Azja</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for acer in acersAs %}
+                            <tr style="height:150px">
+                                <td class="col-md-7">
+                                    <p><a href="{% url 'acer-details' pk=acer.uid %}">{{ acer.botanic_name }}</a><br>
+                                    {{ acer.other_names }}<br>
+                                    {{ acer.latin_name }}<br>
+                                    {{ acer.description }}</p>
+                                </td>
+                                <td class="col-md-5">
+                                    {% if acer.image_tree %}<a href="{% url 'acer-details' pk=acer.uid %}">
+                                    <img src="{{ acer.image_tree.url }}" class="img-thumbnail" alt="Cinque Terre" width="75%"></a>
+                                    {% else %} --- {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="col-md-4">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><h4 style="text-align: center">Ameryka Płn</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for acer in acersNa %}
+                            <tr style="height:150px">
+                                <td class="col-md-7">
+                                    <p><a href="{% url 'acer-details' pk=acer.uid %}">{{ acer.botanic_name }}</a><br>
+                                    {{ acer.other_names }}<br>
+                                    {{ acer.latin_name }}<br>
+                                    {{ acer.description }}</p>
+                                </td>
+                                <td class="col-md-5">
+                                    {% if acer.image_tree %}<a href="{% url 'acer-details' pk=acer.uid %}">
+                                    <img src="{{ acer.image_tree.url }}" class="img-thumbnail" alt="Cinque Terre" width="75%"></a>
+                                    {% else %} --- {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     {% endif %}
-    <!--<a href="/add_product">Dodaj produkt</a>-->
 {% endblock %}

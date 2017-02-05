@@ -13,9 +13,9 @@
             <td><a href="{% url 'acer-update' pk=acer.uid %}">{{ acer.botanic_name }}</a></td>
             <td>{{ acer.latin_name }}</td>
             <td>{{ acer.image_tree }}</td>
-            <td>{% if acer.new_image_tree %}<a href="{{ acer.new_image_tree.url }}">pokrój</a> {% else %} --- {% endif %}</td>
-            <td>{% if acer.new_image_bark %}<a href="{{ acer.new_image_bark.url }}">kora</a> {% else %} --- {% endif %}</td>
-            <td>{% if acer.new_image_leaf %}<a href="{{ acer.new_image_leaf.url }}">liść</a> {% else %} --- {% endif %}</td>
+            <td>{% if acer.image_tree %}<a href="{{ acer.image_tree.url }}"><img src="{{ acer.image_tree.url }}" class="img-thumbnail" alt="Cinque Terre" width="75" height="100"></a> {% else %} --- {% endif %}</td>
+            <td>{% if acer.image_bark %}<a href="{{ acer.image_bark.url }}">kora</a> {% else %} --- {% endif %}</td>
+            <td>{% if acer.image_leaf %}<a href="{{ acer.image_leaf.url }}">liść</a> {% else %} --- {% endif %}</td>
         </tr>
     {% endfor %}
     </table>

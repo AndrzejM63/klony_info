@@ -8,6 +8,7 @@ from django.views.generic import UpdateView
 # Create your views here.
 from klony.forms import LoginForm, AcersSearchForm, AcersSingleForm
 from klony.models import Acers, ORIGIN, SHAPES1, FROST_RES, COLORS
+from klony_info.settings import MEDIA_URL
 
 
 class LoginView2(View):
@@ -79,13 +80,14 @@ def search_acers_objects(b_uid, l_uid, shape, frost, lc_summer, lc_autumn):
         d = dict()
         d['uid'] = a.uid
         d['botanic_name'] = a.botanic_name
+        d['other_names'] = a.other_names
         d['latin_name'] = a.latin_name
-        d['new_image_tree'] = a.new_image_tree
-        d['new_image_bark'] = a.new_image_bark
-        d['new_image_leaf'] = a.new_image_leaf
+        d['description'] = a.description
+        d['origin1'] = a.origin1
+        d['image_tree'] = a.image_tree
         acers.append(d)
 
-    return acers
+    return sorted(acers, key=lambda k: k['botanic_name'].lower())
 
 
 class AcerSearch(View):
@@ -127,10 +129,23 @@ class AcerSearch(View):
             lc_summer = form.cleaned_data['lc_summer']
             lc_autumn = form.cleaned_data['lc_autumn']
             acers = search_acers_objects(b_uid, l_uid, shape, frost, lc_summer, lc_autumn)
+        acersEu = list()
+        acersAs = list()
+        acersNa = list()
+        for a in acers:
+            if a['origin1'] == 'EU':
+                acersEu.append(a)
+            elif a['origin1'] == 'AS':
+                acersAs.append(a)
+            elif a['origin1'] == 'NA':
+                acersNa.append(a)
 
         return render(request,
                       'klony/acers_search.html',
-                      {'acers': acers})
+                      {'acersEu': acersEu,
+                       'acersAs': acersAs,
+                       'acersNa': acersNa}
+                      )
 
 
 class AcerDetails(View):
@@ -140,21 +155,31 @@ class AcerDetails(View):
         if p is None:
             return render(request, 'klony/acers_home.html')
         else:
-            form = AcersSingleForm(initial=dict(botanic_name_variant=p.botanic_name + ' ' + p.variant,
-                                                other_names=p.other_names, latin_name=p.latin_name,
-                                                description=p.description,
-                                                origin=dict(ORIGIN).get(p.origin1) + ' ' + p.origin2,
-                                                shape=p.shape1 + ' ' + p.shape2, leaf_structure=p.leaf_structure,
-                                                leaf_spring=p.lc_spring1 + ' ' + p.lc_spring2,
-                                                leaf_summer=p.lc_summer1 + ' ' + p.lc_summer2,
-                                                leaf_autumn=p.lc_autumn1 + ' ' + p.lc_autumn2, leaf_tail=p.leaf_tail,
-                                                bark=p.bark, flowers=p.flowers, frost_res=p.frost_res,
-                                                frost_zone=p.frost_res_zones, stand=p.stand, soil_kind=p.soil_kind,
-                                                soil_ph=p.soil_ph))
+            d = dict( botanic_name_variant=p.botanic_name + ' ' + p.variant,
+                     other_names=p.other_names, latin_name=p.latin_name,
+                     description=p.description,
+                     origin=dict(ORIGIN).get(p.origin1) + ' ' + p.origin2,
+                     occurrence=p.occurrence, max_height=str(p.height_max1)+' m',
+                     shape=p.shape1 + ' ' + p.shape2, leaf_structure=p.leaf_structure,
+                     leaf_size=p.leaf_size,
+                     leaf_spring=p.lc_spring2,
+                     leaf_summer=p.lc_summer2,
+                     leaf_autumn=p.lc_autumn2,
+                     leaf_tail=p.leaf_tail,
+                     bark=p.bark, flowers=p.flowers, fruits=p.fruits,
+                     frost_res=p.frost_res, frost_zone=p.frost_res_zones, stand=p.stand,
+                     soil_kind=p.soil_kind, soil_ph=p.soil_ph,
+                     characteristics=p.characteristics,
+                     poland_availability='Nie' if p.poland_availability==0 or p.poland_availability is None else 'Tak')
+            d['image_tree']= p.image_tree
+            d['image_bark']=p.image_bark
+            d['image_leaf']=p.image_leaf
+            form = AcersSingleForm(initial=d)
 
         return render(request,
                       'klony/acers_details.html',
-                      {'form': form})
+                      {'form': form,
+                       'MEDIA_URL': MEDIA_URL})
 
 
 class AcerHome(View):

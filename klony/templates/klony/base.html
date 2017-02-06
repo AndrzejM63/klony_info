@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
             <div id="logo">
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div id="menu" class="navbar-left">
+            <div class="navbar-left menuspace">
 
                 <a href="/acers/" class="menuspace">KLONY</a>
                 <a href="/cultivation/" class="menuspace">UPRAWA</a>
@@ -41,7 +42,6 @@
         <!--</h3>-->
 
     <!--</div>-->
-
     <div class="row content-block">
         {% block content %}
         {% endblock %}

@@ -63,8 +63,11 @@ body{
     margin-left: 10px;
 }
 .menuspace a {
-    padding: 10px 8px;
+    padding: 10px 10px;
     margin-left: 10px;
+/*    margin-right: 20px;
+    text: red;
+    bodytext: red;   */
 }
 
 .rowcaps {
@@ -91,8 +94,9 @@ body{
     height: 180px;
 }
 
-#menu {
+#mainmenu {
     vertical-align: middle;
     height: 180px;
+    weidth: 800px
 }
 

@@ -52,13 +52,28 @@ class AcerUpdate(UpdateView):
     success_url = '/acer/'
 
 
-class AcerList(ListView):
-    model = Acers
-    fields = ['uid', 'botanic_name', 'latin_name', 'image_tree', 'new_image_tree', 'new_image_bark', 'new_image_leaf']
-    # success_url = '#'
+class AcerList(View):
+    def get(self, request):
+        acers = search_acers_objects()
+        acersEu = list()
+        acersAs = list()
+        acersNa = list()
+        for a in acers:
+            if a['origin1'] == 'EU':
+                acersEu.append(a)
+            elif a['origin1'] == 'AS':
+                acersAs.append(a)
+            elif a['origin1'] == 'NA':
+                acersNa.append(a)
+
+        return render( request, 'klony/acers_list.html',
+                       {'acersEu': acersEu,
+                       'acersAs': acersAs,
+                       'acersNa': acersNa}
+                       )
 
 
-def search_acers_objects(b_uid, l_uid, shape, frost, lc_summer, lc_autumn):
+def search_acers_objects(b_uid='', l_uid='', shape='', frost='', lc_summer='', lc_autumn=''):
     acers = list()
     acers_obj = list()
     if b_uid:
@@ -101,7 +116,6 @@ class AcerSearch(View):
             d['uid'] = a.uid
             d['botanic_name'] = a.botanic_name + ' ' + a.variant
             d['latin_name'] = a.latin_name + ' ' + a.variant
-            # d['shape1'] = dict(SHAPES1).get(a.shape1)
             acers.append(d)
         acers_lat = sorted(acers, key=lambda k: k['latin_name'].lower())
         acers_bot = sorted(acers, key=lambda k: k['botanic_name'].lower())
@@ -120,8 +134,6 @@ class AcerSearch(View):
         form = AcersSearchForm(request.POST)
         acers = list()
         if form.is_valid():
-            # bname = form.cleaned_data['botanic_name']
-            # lname = form.cleaned_data['latin_name']
             b_uid = form.cleaned_data['b_uid']
             l_uid = form.cleaned_data['l_uid']
             shape = form.cleaned_data['shape']
@@ -141,7 +153,7 @@ class AcerSearch(View):
                 acersNa.append(a)
 
         return render(request,
-                      'klony/acers_search.html',
+                      'klony/acers_list.html',
                       {'acersEu': acersEu,
                        'acersAs': acersAs,
                        'acersNa': acersNa}

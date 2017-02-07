@@ -62,15 +62,15 @@ body{
     margin-top: 10px;
     margin-left: 10px;
 }
-.menuspace a {
+.menuspace {
     padding: 10px 10px;
     margin-left: 10px;
-/*    margin-right: 20px;
+    margin-right: 20px;
     text: red;
-    bodytext: red;   */
+    bodytext: red;
 }
 
-.rowcaps {
+.rowcaps td {
     color: red;
     text-align: right;
     vertical-align: top;
@@ -81,22 +81,16 @@ body{
     margin: 10px;
     margin-bottom: 1em;
     text-align: justify;
-    font-size: 1em;
+    font-size: 2em;
 }
 
 #logo {
     margin: 10px;
-/*    float: left;
+    float: left;
     position: absolute;
     top: 0;
-    left: 0; */
+    left: 0;
     width: 240px;
     height: 180px;
-}
-
-#mainmenu {
-    vertical-align: middle;
-    height: 180px;
-    weidth: 800px
 }
 

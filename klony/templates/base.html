@@ -6,24 +6,24 @@
     <title>Klony</title>
     {% load bootstrap3 %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="/static/styles.css" >-->
+    <!--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="/static/custom.css">
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <div id="logo">
-                <a href="/" class="menuspace"><img src="/static/images/logo.jpg">
+            <div>
+                <a href="/" class="menuspace"><img src="/static/images/logo.jpg" id="logo">
                 </a>
 
             </div>
         </div>
         <div class="col-md-9">
-            <div class="navbar-left menuspace">
+            <div class="navbar-left topmenu">
 
                 <a href="/acers/" class="menuspace">KLONY</a>
                 <a href="/cultivation/" class="menuspace">UPRAWA</a>
@@ -48,11 +48,11 @@
         {% endblock %}
     </div>
 
-    {% bootstrap_javascript %}
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    {% block content_js %}
-    {% endblock %}
+    <!--{% bootstrap_javascript %}-->
+    <!--<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>-->
+    <!--<script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>-->
+    <!--{% block content_js %}-->
+    <!--{% endblock %}-->
 </div>
 </body>
 </html>

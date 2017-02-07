@@ -19,9 +19,9 @@
                         {% for acer in acersEu %}
                             <tr style="height:150px">
                                 <td class="col-md-7">
-                                    <a href="{% url 'acer-details' pk=acer.uid %}">{{ acer.botanic_name }}</a><br>
+                                    <a href="{% url 'acer-details' pk=acer.uid %}">{{ acer.botanic_name }}<br>
                                     {{ acer.other_names }}<br>
-                                    {{ acer.latin_name }}<br>
+                                    {{ acer.latin_name }}</a><br>
                                     {{ acer.description }}
                                 </td>
                                 <td class="col-md-5">

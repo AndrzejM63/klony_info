@@ -70,11 +70,6 @@ body{
     bodytext: red;
 }
 
-.rowcaps td {
-    color: red;
-    text-align: right;
-    vertical-align: top;
-}
 
 /* old php based web settings */
 .bodytext {
@@ -84,6 +79,11 @@ body{
     font-size: 2em;
 }
 
+td.rowcaps {
+    color: red;
+    text-align: right;
+    vertical-align: top;
+}
 #logo {
     margin: 10px;
     float: left;

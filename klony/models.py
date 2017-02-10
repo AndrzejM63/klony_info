@@ -89,3 +89,24 @@ class Acers(models.Model):
 
     def __str__(self):
         return self.latin_name
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    pub_date = models.DateTimeField()
+    text = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ["-pub_date"]
+
+
+class Image(models.Model):
+    image = models.ImageField(upload_to='posts_media', blank=True, null=True)
+    caption = models.CharField(max_length=113, blank=True, null=True)
+    post = models.ForeignKey(Post, null=True, related_name='post')
+
+    def __str__(self):
+        return self.caption

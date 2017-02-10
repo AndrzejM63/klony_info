@@ -1,7 +1,8 @@
 from django import forms
 from django.forms import ModelForm
+import datetime
 
-from klony.models import Acers
+from klony.models import Acers, Post, Image
 
 
 class LoginForm(forms.Form):
@@ -65,3 +66,19 @@ class AcersSingleForm(forms.Form):
     image_leaf = forms.ImageField(required=False)
     characteristics = forms.CharField(max_length=204, required=False)
     poland_availability = forms.CharField(max_length=8, required=False)
+
+
+class PostForm(ModelForm):
+    pub_date = forms.DateField( initial=datetime.date.today, input_formats=['%d/%m/%Y'], required=True )
+    title = forms.CharField(max_length=204, required=True)
+    text = forms.CharField(required=True)
+
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+
+class ImageForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = '__all__'

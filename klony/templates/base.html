@@ -15,6 +15,12 @@
 <body>
 <div class="container-fluid">
     <div class="row">
+        <div>
+            <a href="https://www.facebook.com/klonyinfo" title="Klony" target="_BLANK">
+                <img class="img" src="/uploads/fb_logo/FB-f-Logo__blue_50.png"
+                     style="border: 0px; width:4%; position: absolute; top: 60px; right: 50px;" alt="">
+            </a>
+        </div>
         <div class="col-md-3">
             <div>
                 <a href="/" class="menuspace"><img src="/static/images/logo.jpg" id="logo">
@@ -27,7 +33,7 @@
 
                 <a href="/acers/" class="menuspace">KLONY</a>
                 <a href="/cultivation/" class="menuspace">UPRAWA</a>
-                <a href="/galery/" class="menuspace">GALERIA</a>
+                <a href="/blog/1" class="menuspace">BLOG</a>
                 <a href="/bibliography/" class="menuspace">BIBLIOGRAFIA</a>
                 <a href="/contact/" class="menuspace">KONTAKT</a>
             </div>
@@ -44,8 +50,10 @@
 
     <!--</div>-->
     <div class="row content-block">
+        <div class="col-md-11">
         {% block content %}
         {% endblock %}
+        </div>
     </div>
 
     <!--{% bootstrap_javascript %}-->

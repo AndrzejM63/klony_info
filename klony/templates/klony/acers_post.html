@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Acer form
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+        {% if post %}
+            {# Each "post" is a Post model object. #}
+            <h3> {{ post.title|upper }}</h3>
+            <p> {{ post.text }} </p><br />
+        {% endif %}
+<div class="pagination">
+    <span class="step-links">
+        {% if post.has_previous %}
+            <a href="?page={{ post.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ post.number }} of {{ post.paginator.num_pages }}.
+        </span>
+
+        {% if post.has_next %}
+            <a href="?page={{ post.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+        </div>
+        {% if images.value %}
+        <div class="col-md-2" enctype="multipart/form-data">
+            <div class="thumbnail">
+            <a href="{{MEDIA_URL}}{{ form.image_tree.value }}">
+                <img src="{{MEDIA_URL}}{{ form.image_tree.value }}" alt="Pokrój" style="width:100%">
+                <!--<div class="caption" style="text-align:center">-->
+                    <!--<p>Pokrój</p>-->
+                <!--</div>-->
+            </a>
+            </div>
+        </div>
+        {% endif %}
+        {% if form.image_bark.value %}
+        <div class="col-md-2" enctype="multipart/form-data">
+            <div class="thumbnail">
+            <a href="{{MEDIA_URL}}{{ form.image_bark.value }}">
+                <img src="{{MEDIA_URL}}{{ form.image_bark.value }}" alt="Kora" style="width:100%">
+                <!--<div class="caption" style="text-align:center">-->
+                    <!--<p>Kora21</p>-->
+                <!--</div>-->
+            </a>
+            </div>
+        </div>
+        {% endif %}
+        {% if form.image_leaf.value %}
+        <div class="col-md-2" enctype="multipart/form-data">
+            <div class="thumbnail">
+            <a href="{{MEDIA_URL}}{{ form.image_leaf.value }}">
+                <img src="{{MEDIA_URL}}{{ form.image_leaf.value }}" alt="Liście" style="width:100%">
+                <!--<div class="caption" style="text-align:center">-->
+                    <!--<p>Liście</p>-->
+                <!--</div>-->
+            </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

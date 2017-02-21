@@ -48,8 +48,8 @@ body{
     margin: 10px;
     font-size: 1em;
 }
+
 .content-block {
- {
     margin: 10px;
     font-size: 1em;
 }
@@ -58,6 +58,7 @@ body{
     text-align: center;
     margin-top: 200px;
 }
+
 .topmenu {
     margin-top: 10px;
     margin-left: 10px;
@@ -76,14 +77,15 @@ body{
     margin: 10px;
     margin-bottom: 1em;
     text-align: justify;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 td.rowcaps {
-    color: red;
+    text: red;
     text-align: right;
     vertical-align: top;
 }
+
 #logo {
     margin: 10px;
     float: left;

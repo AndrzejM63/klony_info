@@ -81,10 +81,10 @@ class AcerBibliography( View ):
 
 class AcerList( View ):
     def get(self, request):
-        acers = search_acers_objects( )
-        acers_eu = list( )
-        acers_as = list( )
-        acers_na = list( )
+        acers = search_acers_objects()
+        acers_eu = list()
+        acers_as = list()
+        acers_na = list()
         for a in acers:
             if a['origin1'] == 'EU':
                 acers_eu.append( a )
@@ -93,11 +93,11 @@ class AcerList( View ):
             elif a['origin1'] == 'NA':
                 acers_na.append( a )
 
-        return render(request, 'klony/acers_list.html',
+        return render( request, 'klony/acers_list.html',
                        {'acersEu': acers_eu,
                         'acersAs': acers_as,
                         'acersNa': acers_na}
-                      )
+                       )
 
 
 def search_acers_objects(b_uid='', l_uid='', shape='', frost='', lc_summer='', lc_autumn=''):
@@ -220,17 +220,18 @@ class AcerDetails( View ):
                        {'form': form,
                         'MEDIA_URL': MEDIA_URL} )
 
-class AcerBlog(View):
+
+class AcerBlog( View ):
     def get(self, request, page):
-        posts = Post.objects.all()
-        paginator = Paginator(posts, 1) # single post per page
+        posts = Post.objects.all( )
+        paginator = Paginator( posts, 1 )  # single post per page
 
-        post = paginator.page(page)
-        images = Image.objects.filter( post = (post.start_index()-1) )
+        post = paginator.page( page )
+        images = Image.objects.filter( post=post.object_list[0].pk )
 
-        render( request, 'klony/acers_post.html',
-                {'post': post, 'images': images.values()}
-               )
-
-
-
+        return render( request,
+                       'klony/acers_post.html',
+                       {'post': post,
+                        'images': images,
+                        }
+                       )

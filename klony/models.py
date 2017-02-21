@@ -106,7 +106,7 @@ class Post(models.Model):
 class Image(models.Model):
     image = models.ImageField(upload_to='posts_media', blank=True, null=True)
     caption = models.CharField(max_length=113, blank=True, null=True)
-    post = models.ForeignKey(Post, null=True, related_name='post')
+    post = models.ForeignKey(Post, null=True, related_name='trutu')
 
     def __str__(self):
         return self.caption

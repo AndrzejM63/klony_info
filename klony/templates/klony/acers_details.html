@@ -14,7 +14,7 @@
             <table>
                 <tr><td class="rowcaps">Pochodzenie:&nbsp;</td><td>{{ form.origin.value }}</td></tr>
                 <tr><td class="rowcaps">Występowanie:&nbsp;</td><td>{{ form.occurrence.value }}</td></tr>
-                <tr><td class="rowcaps">Wysokość maksymalna:&nbsp;</td><td>{{ form.max_height.value }}</td></tr>
+                <tr><td class="rowcaps">Wysokość&nbsp;maksymalna:&nbsp;</td><td>{{ form.max_height.value }}</td></tr>
                 <tr><td class="rowcaps">Pokrój:&nbsp;</td><td>{{ form.shape.value }}</td></tr>
                 <tr><td class="rowcaps">Budowa liści:&nbsp;</td><td>{{ form.leaf_structure.value }}</td></tr>
                 <tr><td class="rowcaps">Wielkość liści:&nbsp;</td><td>{{ form.leaf_size.value }}</td></tr>
@@ -27,7 +27,7 @@
                 <tr><td class="rowcaps">Owoce:&nbsp;</td><td>{{ form.fruits.value }}</td></tr>
                 <tr><td class="rowcaps">Stanowisko:&nbsp;</td><td>{{ form.stand.value }}</td></tr>
                 <tr><td class="rowcaps">Mrozoodporność:&nbsp;</td><td>{{ form.frost_res.value }}</td></tr>
-                <tr><td class="rowcaps">Strefy mrozoodporności:&nbsp;</td><td>{{ form.frost_zone.value }}</td></tr>
+                <tr><td class="rowcaps">Strefy&nbsp;mrozoodporności:&nbsp;</td><td>{{ form.frost_zone.value }}</td></tr>
                 <tr><td class="rowcaps">Rodzaj gleby:&nbsp;</td><td>{{ form.soil_kind.value }}</td></tr>
                 <tr><td class="rowcaps">Odczyn gleby:&nbsp;</td><td>{{ form.soil_ph.value }}</td></tr>
                 <tr><td class="rowcaps">Cechy charakterystyczne:&nbsp;</td><td>{{ form.characteristics.value }}</td></tr>
@@ -35,7 +35,7 @@
            </table>
         </div>
         {% if form.image_tree.value %}
-        <div class="col-md-2" enctype="multipart/form-data">
+        <div class="col-md-4" enctype="multipart/form-data">
             <div class="thumbnail">
             <a href="{{MEDIA_URL}}{{ form.image_tree.value }}">
                 <img src="{{MEDIA_URL}}{{ form.image_tree.value }}" alt="Pokrój" style="width:100%">
@@ -56,10 +56,10 @@
                 <!--</div>-->
             </a>
             </div>
-        </div>
+        <!--</div>-->
         {% endif %}
         {% if form.image_leaf.value %}
-        <div class="col-md-2" enctype="multipart/form-data">
+        <!--<div class="col-md-2" enctype="multipart/form-data">-->
             <div class="thumbnail">
             <a href="{{MEDIA_URL}}{{ form.image_leaf.value }}">
                 <img src="{{MEDIA_URL}}{{ form.image_leaf.value }}" alt="Liście" style="width:100%">

@@ -192,13 +192,14 @@ class AcerDetails( View ):
         # p = Acers.objects.get(pk=pk)
         p = get_object_or_404( Acers, pk=pk )
         if p is None:
-            return render( request, 'klony/acers_home.html' )
+            return render( request, 'klony/acers_list.html' )
         else:
             d = dict( botanic_name_variant=p.botanic_name + ' ' + p.variant,
                       other_names=p.other_names, latin_name=p.latin_name,
                       description=p.description,
                       origin=dict( ORIGIN ).get( p.origin1 ) + ' ' + p.origin2,
-                      occurrence=p.occurrence, max_height=str( p.height_max1 ) + ' m',
+                      occurrence=p.occurrence,
+                      max_height=str( p.height_max1 ) + ' m',
                       shape=p.shape1 + ' ' + p.shape2, leaf_structure=p.leaf_structure,
                       leaf_size=p.leaf_size,
                       leaf_spring=p.lc_spring2,
@@ -227,11 +228,18 @@ class AcerBlog( View ):
         paginator = Paginator( posts, 1 )  # single post per page
 
         post = paginator.page( page )
+        postList = []
+        i = 1
+        for p in posts[0:10]:
+            d = {'title': p.title, 'page': i}
+            postList.append(d)
+            i += 1
         images = Image.objects.filter( post=post.object_list[0].pk )
 
         return render( request,
                        'klony/acers_post.html',
                        {'post': post,
                         'images': images,
+                        'post2': postList,
                         }
                        )

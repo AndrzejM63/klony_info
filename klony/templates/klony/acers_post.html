@@ -6,14 +6,23 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-9 col-md-offset-1">
-        {% if post %}
-            {% for p in post %}
-            {# Each "post" is a Post model object. #}
-            <h3> {{ p.title|upper }}</h3>
-            <p> {{ p.text }} </p><br />
-            {% endfor %}
+        <div class="col-md-2">
+        {% if post2 %}
+            <h4> Pozostałe posty</h4>
+        {% for p in post2 %}
+            {% if p.page == post.number %}
+                <strong>{{ p.title }}</strong>
+            {% else %}
+                <a href="/blog/{{ p.page }}">
+                     {{ p.title }}
+                </a>
+            {% endif %}
+            <br>
+        {% endfor %}
         {% endif %}
+        </div>
+        <div class="col-md-6">
+        {% if post %}
             <div class="pagination">
                 <span class="step-links">
                     {% if post.has_previous %}
@@ -29,6 +38,12 @@
                     {% endif %}
                 </span>
             </div>
+            {% for p in post %}
+            {# Each "post" is a Post model object. #}
+            <h3> {{ p.title|upper }}</h3>
+            <p> {{ p.text }} </p><br />
+            {% endfor %}
+        {% endif %}
         </div>
         {% if images %}
         {% for image in images %}
@@ -44,6 +59,5 @@
         </div>
         {% endfor %}
         {% endif %}
-
     </div>
 {% endblock %}

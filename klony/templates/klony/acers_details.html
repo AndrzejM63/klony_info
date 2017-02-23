@@ -5,70 +5,110 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-            <p>{{ form.botanic_name_variant.value }}</p>
-            <p>{{ form.other_names.value }}</p>
-            <p>{{ form.latin_name.value }}</p>
-            <p>{{ form.description.value }}</p>
-            <table>
+<div class="row">
+    <div class="col-md-5 col-md-offset-1">
+        <p>{{ form.botanic_name_variant.value }}</p>
+        <p>{{ form.other_names.value }}</p>
+        <p>{{ form.latin_name.value }}</p>
+        <p>{{ form.description.value }}</p>
+        <table>
+            {% if form.origin.value %}
                 <tr><td class="rowcaps">Pochodzenie:&nbsp;</td><td>{{ form.origin.value }}</td></tr>
+            {% endif %}
+            {% if form.occurrence.value %}
                 <tr><td class="rowcaps">Występowanie:&nbsp;</td><td>{{ form.occurrence.value }}</td></tr>
+            {% endif %}
+            {% if form.max_height.value %}
                 <tr><td class="rowcaps">Wysokość&nbsp;maksymalna:&nbsp;</td><td>{{ form.max_height.value }}</td></tr>
+            {% endif %}
+            {% if form.shape.value %}
                 <tr><td class="rowcaps">Pokrój:&nbsp;</td><td>{{ form.shape.value }}</td></tr>
+            {% endif %}
+            {% if form.leaf_structure.value %}
                 <tr><td class="rowcaps">Budowa liści:&nbsp;</td><td>{{ form.leaf_structure.value }}</td></tr>
+            {% endif %}
+            {% if form.leaf_size.value %}
                 <tr><td class="rowcaps">Wielkość liści:&nbsp;</td><td>{{ form.leaf_size.value }}</td></tr>
+            {% endif %}
+            {% if form.leaf_spring.value %}
                 <tr><td class="rowcaps">Kolor liści wiosną:&nbsp;</td><td>{{ form.leaf_spring.value }}</td></tr>
+            {% endif %}
+            {% if form.leaf_summer.value %}
                 <tr><td class="rowcaps">Kolor liści latem:&nbsp;</td><td>{{ form.leaf_summer.value }}</td></tr>
+            {% endif %}
+            {% if form.leaf_autumn.value %}
                 <tr><td class="rowcaps">Kolor liści jesienią:&nbsp;</td><td>{{ form.leaf_autumn.value }}</td></tr>
+            {% endif %}
+            {% if form.leaf_tail.value %}
                 <tr><td class="rowcaps">Ogonki liściowe:&nbsp;</td><td>{{ form.leaf_tail.value }}</td></tr>
+            {% endif %}
+            {% if form.bark.value %}
                 <tr><td class="rowcaps">Kora:&nbsp;</td><td>{{ form.bark.value }}</td></tr>
+            {% endif %}
+            {% if form.flowers.value %}
                 <tr><td class="rowcaps">Kwiaty:&nbsp;</td><td>{{ form.flowers.value }}</td></tr>
+            {% endif %}
+            {% if form.fruits.value %}
                 <tr><td class="rowcaps">Owoce:&nbsp;</td><td>{{ form.fruits.value }}</td></tr>
+            {% endif %}
+            {% if form.stand.value %}
                 <tr><td class="rowcaps">Stanowisko:&nbsp;</td><td>{{ form.stand.value }}</td></tr>
+            {% endif %}
+            {% if form.frost_res.value %}
                 <tr><td class="rowcaps">Mrozoodporność:&nbsp;</td><td>{{ form.frost_res.value }}</td></tr>
+            {% endif %}
+            {% if form.frost_zone.value %}
                 <tr><td class="rowcaps">Strefy&nbsp;mrozoodporności:&nbsp;</td><td>{{ form.frost_zone.value }}</td></tr>
+            {% endif %}
+            {% if form.soil_kind.value %}
                 <tr><td class="rowcaps">Rodzaj gleby:&nbsp;</td><td>{{ form.soil_kind.value }}</td></tr>
+            {% endif %}
+            {% if form.soil_ph.value %}
                 <tr><td class="rowcaps">Odczyn gleby:&nbsp;</td><td>{{ form.soil_ph.value }}</td></tr>
+            {% endif %}
+            {% if form.characteristics.value %}
                 <tr><td class="rowcaps">Cechy charakterystyczne:&nbsp;</td><td>{{ form.characteristics.value }}</td></tr>
+            {% endif %}
+            {% if form.poland_availability.value %}
                 <tr><td class="rowcaps">Dostępność w Polsce:&nbsp;</td><td>{{ form.poland_availability.value }}</td></tr>
-           </table>
-        </div>
-        {% if form.image_tree.value %}
-        <div class="col-md-4" enctype="multipart/form-data">
-            <div class="thumbnail">
-            <a href="{{MEDIA_URL}}{{ form.image_tree.value }}">
-                <img src="{{MEDIA_URL}}{{ form.image_tree.value }}" alt="Pokrój" style="width:100%">
-                <!--<div class="caption" style="text-align:center">-->
-                    <!--<p>Pokrój</p>-->
-                <!--</div>-->
-            </a>
-            </div>
-        </div>
-        {% endif %}
-        {% if form.image_bark.value %}
-        <div class="col-md-2" enctype="multipart/form-data">
-            <div class="thumbnail">
-            <a href="{{MEDIA_URL}}{{ form.image_bark.value }}">
-                <img src="{{MEDIA_URL}}{{ form.image_bark.value }}" alt="Kora" style="width:100%">
-                <!--<div class="caption" style="text-align:center">-->
-                    <!--<p>Kora21</p>-->
-                <!--</div>-->
-            </a>
-            </div>
-        <!--</div>-->
-        {% endif %}
-        {% if form.image_leaf.value %}
-        <!--<div class="col-md-2" enctype="multipart/form-data">-->
-            <div class="thumbnail">
-            <a href="{{MEDIA_URL}}{{ form.image_leaf.value }}">
-                <img src="{{MEDIA_URL}}{{ form.image_leaf.value }}" alt="Liście" style="width:100%">
-                <!--<div class="caption" style="text-align:center">-->
-                    <!--<p>Liście</p>-->
-                <!--</div>-->
-            </a>
-            </div>
-        </div>
-        {% endif %}
+            {% endif %}
+       </table>
     </div>
+    {% if form.image_tree.value %}
+    <div class="col-md-4" enctype="multipart/form-data">
+        <div class="thumbnail">
+        <a href="{{MEDIA_URL}}{{ form.image_tree.value }}">
+            <img src="{{MEDIA_URL}}{{ form.image_tree.value }}" alt="Pokrój" style="width:100%">
+            <!--<div class="caption" style="text-align:center">-->
+                <!--<p>Pokrój</p>-->
+            <!--</div>-->
+        </a>
+        </div>
+    </div>
+    {% endif %}
+    {% if form.image_bark.value %}
+    <div class="col-md-2" enctype="multipart/form-data">
+        <div class="thumbnail">
+        <a href="{{MEDIA_URL}}{{ form.image_bark.value }}">
+            <img src="{{MEDIA_URL}}{{ form.image_bark.value }}" alt="Kora" style="width:100%">
+            <!--<div class="caption" style="text-align:center">-->
+                <!--<p>Kora21</p>-->
+            <!--</div>-->
+        </a>
+        </div>
+    <!--</div>-->
+    {% endif %}
+    {% if form.image_leaf.value %}
+    <!--<div class="col-md-2" enctype="multipart/form-data">-->
+        <div class="thumbnail">
+        <a href="{{MEDIA_URL}}{{ form.image_leaf.value }}">
+            <img src="{{MEDIA_URL}}{{ form.image_leaf.value }}" alt="Liście" style="width:100%">
+            <!--<div class="caption" style="text-align:center">-->
+                <!--<p>Liście</p>-->
+            <!--</div>-->
+        </a>
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

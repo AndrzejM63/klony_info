@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_dtq9%(yo$!7-we#do=8(k9da!2@3v)a2iwod45&ub5wj*&ut5'
+SECRET_KEY = os.environ['RSS_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'klony_db',
         'ENGINE': 'mysql.connector.django',
         'USER': 'root',
-        'PASSWORD': 'kolecwdupie',
+        'PASSWORD': os.environ['KLONY_DATABASE_PASSWORD'],
         'OPTIONS': {
                     'autocommit': True,
         },

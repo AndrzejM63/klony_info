@@ -93,3 +93,6 @@ ENV/
 
 # project media
 uploads/
+
+# project secret
+secret.txt
